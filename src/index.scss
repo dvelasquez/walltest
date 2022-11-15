@@ -1,0 +1,27 @@
+@use "variables" as v;
+
+@font-face {
+  font-family: Wallie;
+  src: url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Skinny.woff2) format("woff2"),url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Skinny.woff) format("woff"),url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Skinny.ttf) format("truetype");
+  font-weight: 300;
+  font-display: fallback
+}
+
+@font-face {
+  font-family: Wallie;
+  src: url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.woff2) format("woff2"),url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.woff) format("woff"),url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.ttf) format("truetype");
+  font-display: fallback
+}
+
+@font-face {
+  font-family: Wallie;
+  src: url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.woff2) format("woff2"),url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.woff) format("woff"),url(//d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.ttf) format("truetype");
+  font-weight: 700;
+  font-display: fallback
+}
+
+html, * {
+  font-family: v.$wallie-font-family;
+  color: v.$primary-text-color;
+}
+
