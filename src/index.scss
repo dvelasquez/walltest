@@ -23,5 +23,7 @@
 html, * {
   font-family: v.$wallie-font-family;
   color: v.$primary-text-color;
+  margin: 0;
+  box-sizing: border-box;
 }
 
