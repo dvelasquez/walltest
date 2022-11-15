@@ -31,4 +31,11 @@ function useSearch<T>(
   return results;
 }
 
+export const DEFAULT_SEARCH_OPTIONS = {
+  findAllMatches: true,
+  threshold: 0.1,
+  ignoreLocation: true,
+  keys: ["title", "description", "email", "price"],
+};
+
 export default useSearch;
