@@ -17,10 +17,12 @@
   "exclude": [
     "node_modules",
     "build",
+    "cypress",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
     "src/**/*.spec.ts",
     "src/**/*.fixture.tsx",
-    "src/**/__mocks__/*"
+    "src/**/__mocks__/*",
+    "node_modules/cypress/**/*"
   ]
 }

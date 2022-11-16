@@ -16,12 +16,15 @@ const LayoutComponent: React.FC<PropsWithChildren> = ({ children }) => {
           <img
             className={style.header__logo}
             src="/images/logos/logo-wallapop-home-v2.svg"
+            data-testid="logo"
+            alt="Wallapop logo"
           />
           <input
             className={style.header__searchbar}
             type="text"
             value={search}
             onChange={handleSearchChange}
+            data-testid="searchbar"
           />
         </header>
         <main className={style.main}> {children} </main>
