@@ -1,0 +1,25 @@
+@use '../../variables' as v;
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 66px;
+  border-bottom-color: rgba(207, 216, 220);
+  background-color: v.$background-secondary-color;
+  position: sticky;
+  top: 0;
+
+  &__logo {
+    height: 24.56px;
+    width: 100px;
+  }
+  &__searchbar {
+    width: 100%;
+    height: 40px;
+    border-radius: 21px;
+    border: 1px solid v.$border_color;
+    max-width: 400px;
+  }
+}

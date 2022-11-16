@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, createContext, useState } from "react";
+import HeaderComponent from "../Header/HeaderComponent";
 import style from "./LayoutComponent.module.scss";
 
 export const SearchContext = createContext<string>("");
@@ -12,21 +13,10 @@ const LayoutComponent: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <SearchContext.Provider value={search}>
       <div className={style.container}>
-        <header className={style.header}>
-          <img
-            className={style.header__logo}
-            src="/images/logos/logo-wallapop-home-v2.svg"
-            data-testid="logo"
-            alt="Wallapop logo"
-          />
-          <input
-            className={style.header__searchbar}
-            type="text"
-            value={search}
-            onChange={handleSearchChange}
-            data-testid="searchbar"
-          />
-        </header>
+        <HeaderComponent
+          handleSearchChange={handleSearchChange}
+          search={search}
+        />
         <main className={style.main}> {children} </main>
       </div>
     </SearchContext.Provider>
