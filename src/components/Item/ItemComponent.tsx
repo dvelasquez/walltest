@@ -6,7 +6,12 @@ const ItemComponent: React.FC<Item> = (item) => {
   return (
     <div className={style.item} data-testid="item-component">
       <h2>{item.title}</h2>
-      <img src={item.image} loading="lazy" className={style.item__image} />
+      <img
+        src={item.image}
+        loading="lazy"
+        className={style.item__image}
+        decoding="async"
+      />
       <p>Description: {item.description}</p>
       <p>Email: {item.email}</p>
       <p>Price: {item.price}</p>

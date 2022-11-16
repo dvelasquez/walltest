@@ -8,8 +8,14 @@ describe("ItemManager spec", () => {
       cy.get('[data-testid="header-logo"]').should("exist");
       cy.get('[data-testid="header-searchbar"]').should("exist");
     });
-    it("should render all elements if there is no search", () => {
-      cy.get('[data-testid="item-component"]').should("have.length", 20);
+    it("should render max 5 elements if there is no search", () => {
+      cy.get('[data-testid="item-component"]').should("have.length", 5);
+    });
+    it("should load more elements if the button is present", () => {
+      cy.get('[data-testid="button-load-more"]').should("exist");
+      cy.get('[data-testid="item-component"]').should("have.length", 5);
+      cy.get('[data-testid="button-load-more"]').click();
+      cy.get('[data-testid="item-component"]').should("have.length", 10);
     });
     it('should render "No results" if there is no match', () => {
       cy.get('[data-testid="header-searchbar"]').type("asdasfasdfads");

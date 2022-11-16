@@ -5,6 +5,7 @@ import ItemComponent from "./ItemComponent";
 describe("ItemComponent test suite", () => {
   it("should render the item component", () => {
     const item: Item = {
+      id: 123,
       title: "Test title",
       description: "Test description",
       email: "test@wallapop.com",

@@ -1,5 +1,10 @@
 import React from "react";
-import { render, waitFor, screen } from "@testing-library/react";
+import {
+  render,
+  waitFor,
+  screen,
+  getAllByTestId,
+} from "@testing-library/react";
 import ManagerPage from "./Manager";
 import useSearch from "../../hooks/useSearch";
 import { getItems } from "../../data/items";
@@ -28,5 +33,18 @@ describe("Manager test suite", () => {
     await waitFor(() => screen.getByTestId("item-manager-list"));
     const manager = screen.getByTestId("item-manager-list");
     expect(manager).toBeInTheDocument();
+  });
+
+  it("should render only the first 5 items", async () => {
+    jest
+      .mocked(useSearch)
+      .mockReturnValue(itemsFixture.items.map((item) => ({ item })));
+    jest.mocked(getItems).mockResolvedValue(itemsFixture);
+
+    render(<ManagerPage />);
+    await waitFor(() => screen.getAllByTestId("item-component"));
+
+    const items = screen.getAllByTestId("item-component");
+    expect(items.length).toBe(5);
   });
 });

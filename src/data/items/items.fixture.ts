@@ -3,6 +3,7 @@ import { ItemsResponse } from "./types";
 export const itemsFixture: ItemsResponse = {
   items: [
     {
+      id: 1389290756,
       title: "iPhone 6S Oro",
       description:
         "Vendo un iPhone 6 S color Oro nuevo y sin estrenar. Me han dado uno en el trabajo y no necesito el que me compré. En tienda lo encuentras por 749 euros y yo lo vendo por 740. Las descripciones las puedes encontrar en la web de apple. Esta libre.",
@@ -12,6 +13,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/iphone.png",
     },
     {
+      id: 510527716,
       title: "Polaroid 635",
       description:
         "Cámara clásica de fotos Polaroid, modelo 635. Las fotos son a super color. Está en perfectas condiciones y es fantástica para coleccionistas. Se necesitan carretes instax 20 para hacer fotos. Tamaño M.",
@@ -21,6 +23,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/camera.png",
     },
     {
+      id: 1694856966,
       title: "Bolso piel marca Hoss",
       description:
         "Vendo bolso de piel marrón grande de la marca Hoss. Lo compré hace dos temporadas. Esta en perfectas condiciones, siempre se ha guardado en bolsa de tela para su conservación. Precio original de 400 euros. Lo vendo por 250 porque ya casi no me lo pongo. Tiene varios compartimentos dentro.",
@@ -30,6 +33,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/bag.png",
     },
     {
+      id: 794625101,
       title: "Reloj de Daniel Wellington",
       description:
         "Reloj de la marca Daniel Wellington usado sólo un mes. Ahora me han regalado otro que me gusta más y es muy parecido; por eso lo vendo. Su precio en tienda son 149 pero lo vendo por 100 euros. Es con la esfera blanca y la correa de piel marron. ",
@@ -39,6 +43,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/watch.png",
     },
     {
+      id: -366860414,
       title: "Coche antiguo americano",
       description:
         "Coche antiguo americano de color marrón. Se tiene que cambiar el motor pero aparte de eso todo funciona correctamente. Interior de piel clara. Ideal para coleccionistas",
@@ -48,6 +53,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/car.png",
     },
     {
+      id: -1687874365,
       title: "Barbacoa",
       description:
         "Barbacoa en buen estado. La he usado pocas veces y está casi nueva. Ideal para fiestas y celebraciones",
@@ -57,6 +63,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/barbecue.png",
     },
     {
+      id: -707338098,
       title: "Sofa de piel auténtica",
       description:
         "Vendo sofá de piel negro. Tiene signos evidentes de uso, de ahí el precio. Es muy cómodo y bonito",
@@ -66,6 +73,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/sofa.png",
     },
     {
+      id: 667298431,
       title: "Vespa restaurada",
       description:
         "Está restaurada y muy cuidada, con piezas originales y repintada una vez de color rojo carmín. Solo acepto ofertas serias",
@@ -75,6 +83,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/vespa.png",
     },
     {
+      id: -1624050418,
       title: "Batidora",
       description:
         "Está completamente nueva (no la he sacado de la caja). Me la regalaron pero no la quiero",
@@ -84,6 +93,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/mixer.png",
     },
     {
+      id: 472051907,
       title: "Mudanzas",
       description:
         "Está completamente nueva (no la he sacado de la caja). Me la regalaron pero no la quiero",
@@ -93,6 +103,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/moves.png",
     },
     {
+      id: -1325946118,
       title: "Lavadora",
       description:
         "Vendo lavadora comprada hace 1 año. Me cambio de piso y me urge venderla",
@@ -102,6 +113,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/washer.png",
     },
     {
+      id: -1808233835,
       title: "TV de 43 pulgadas",
       description:
         "Televisor de 43 pulgadas. Funciona perfectamente. No tengo la base. Precio negociable",
@@ -111,6 +123,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/tv.png",
     },
     {
+      id: 411961946,
       title: "Piso en Clot",
       description:
         "60m2, en pleno mercado del Clot. Piso muy acogedor, reformado. Ideal para parejas",
@@ -120,6 +133,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/flat.png",
     },
     {
+      id: 1996249144,
       title: "Tocadiscos vintage",
       description:
         "Muy bien cuidado! Regalo los discos de LP que se ve en las fotos",
@@ -129,6 +143,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/turntable.png",
     },
     {
+      id: -1174351111,
       title: "Nevera verde",
       description: "Pequeñita, con un verde Chevrolet, muy de los 60!",
       price: "125",
@@ -137,6 +152,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/fridge.png",
     },
     {
+      id: -205539473,
       title: "Cámara réflex",
       description:
         "La vendo porque no la uso. No tengo ningún accesorio como la bolsa ni objetivos.",
@@ -146,6 +162,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/analogue.jpg",
     },
     {
+      id: 1442336449,
       title: "Clases de piano",
       description:
         "Doy clases de piano a particulares. Todas las edades. Llevo más de 20 años tocando el piano.",
@@ -155,6 +172,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/piano.jpg",
     },
     {
+      id: 1368629477,
       title: "Material de oficina",
       description:
         "Vendo mucho material de oficina, como bolígrafos, lápices, post-its, etc. Preguntad para más info",
@@ -164,6 +182,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/pen.jpg",
     },
     {
+      id: -2144695669,
       title: "Macbook 13 pulgadas",
       description:
         "Vendo Macbook porque me han regalado el nuevo. Este está usado pero en buen estado",
@@ -173,6 +192,7 @@ export const itemsFixture: ItemsResponse = {
         "https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/mac.jpg",
     },
     {
+      id: 2011259314,
       title: "Cascos",
       description:
         "Cascos usados. No son muy buenos, pero son bastante bonitos. Precio negociable",
