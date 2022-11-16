@@ -21,13 +21,22 @@ const ManagerPage: React.FC = () => {
   );
 
   return (
-    <>
+    <div data-testid="item-manager-list">
       {searchResult.length > 0 ? (
-        searchResult.map(({ item }, i) => <ItemComponent key={i} {...item} />)
+        searchResult.map(({ item }, i) => (
+          <ItemComponent
+            key={i}
+            title={item.title}
+            description={item.description}
+            image={item.image}
+            email={item.email}
+            price={item.price}
+          />
+        ))
       ) : (
         <ItemNotFoundComponent />
       )}
-    </>
+    </div>
   );
 };
 
