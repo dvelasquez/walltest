@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { SearchContext } from "../../components/Layout/LayoutComponent";
 import ItemComponent from "../../components/Item/ItemComponent";
 import { getItems } from "../../data/items";
-import { ItemsResponse, Item } from "../../data/items/types";
+import { ItemsResponse, Item, ItemField } from "../../data/items/types";
 import useSearch, { DEFAULT_SEARCH_OPTIONS } from "../../hooks/useSearch";
 import ItemNotFoundComponent from "../../components/Item/ItemNotFoundComponent";
 
@@ -11,6 +11,13 @@ const ManagerPage: React.FC = () => {
   const [paginatedResults, setPaginatedResults] = useState<{ item: Item }[]>(
     []
   );
+  const [sortOptions, setSortOptions] = useState<{
+    sortBy: ItemField;
+    orderBy: "asc" | "desc";
+  }>({
+    sortBy: "title",
+    orderBy: "asc",
+  });
   const [lastItem, setLastItem] = useState<number>(0);
   const search = useContext(SearchContext);
 
@@ -30,6 +37,8 @@ const ManagerPage: React.FC = () => {
   const searchResult = useSearch<Item>(
     data?.items || [],
     search || "",
+    sortOptions.sortBy,
+    sortOptions.orderBy,
     DEFAULT_SEARCH_OPTIONS
   );
 
@@ -63,33 +72,72 @@ const ManagerPage: React.FC = () => {
     setLastItem(nextLastItem);
   };
 
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (e.target.id === "sort-field") {
+      setSortOptions({
+        ...sortOptions,
+        sortBy: e.target.value as ItemField,
+      });
+    } else if (e.target.id === "sort-order") {
+      setSortOptions({
+        ...sortOptions,
+        orderBy: e.target.value as "asc" | "desc",
+      });
+    }
+    setLastItem(0);
+  };
+
   return (
-    <div data-testid="item-manager-list">
-      {paginatedResults.length > 0 ? (
-        paginatedResults.map(({ item }) => (
-          <ItemComponent
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-            email={item.email}
-            price={item.price}
-          />
-        ))
-      ) : (
-        <ItemNotFoundComponent />
-      )}
-      {lastItem <= paginatedResults.length ? (
-        <>
-          <button data-testid="button-load-more" onClick={handleLoadMore}>
-            Cargar mas
-          </button>
-        </>
-      ) : (
-        <p>No hay mas resultados</p>
-      )}
-    </div>
+    <>
+      <div data-testid="item-sorter">
+        <select
+          name="sort-field"
+          id="sort-field"
+          data-testid="select-sort-field"
+          onChange={handleSortChange}
+        >
+          <option value="title">Titulo</option>
+          <option value="price">Precio</option>
+          <option value="description">Descripcion</option>
+          <option value="email">E-Mail</option>
+        </select>
+        <select
+          name="sort-order"
+          id="sort-order"
+          data-testid="select-sort-order"
+          onChange={handleSortChange}
+        >
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendente</option>
+        </select>
+      </div>
+      <div data-testid="item-manager-list">
+        {paginatedResults.length > 0 ? (
+          paginatedResults.map(({ item }) => (
+            <ItemComponent
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              image={item.image}
+              email={item.email}
+              price={item.price}
+            />
+          ))
+        ) : (
+          <ItemNotFoundComponent />
+        )}
+        {lastItem <= paginatedResults.length ? (
+          <>
+            <button data-testid="button-load-more" onClick={handleLoadMore}>
+              Cargar mas
+            </button>
+          </>
+        ) : (
+          <p>No hay mas resultados</p>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -7,6 +7,10 @@ export interface Item {
   image: string;
 }
 
+const ItemFields = ["title", "description", "email", "price"] as const;
+
+export type ItemField = typeof ItemFields[number];
+
 export interface ItemsResponse {
   items: Item[];
 }

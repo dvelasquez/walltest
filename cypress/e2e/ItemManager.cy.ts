@@ -40,5 +40,33 @@ describe("ItemManager spec", () => {
         }
       );
     });
+    it("should sort the items according to sorting options", () => {
+      cy.fixture("sort-assertions").then(
+        (
+          sortAssertions: {
+            sortBy: string;
+            orderBy: "asc" | "desc";
+            firstResult: string;
+            secondResult: string;
+          }[]
+        ) => {
+          sortAssertions.forEach(
+            ({ sortBy, orderBy, firstResult, secondResult }) => {
+              cy.log(`Sorting by ${sortBy} in ${orderBy} order`);
+              cy.get('[data-testid="header-searchbar"]').clear();
+              cy.get('[data-testid="select-sort-field"]').select(sortBy);
+              cy.get('[data-testid="select-sort-order"]').select(orderBy);
+              cy.wait(100); // wait for the items to be sorted
+              cy.get('[data-testid="item-component"]')
+                .first()
+                .should("contain.text", firstResult);
+              cy.get('[data-testid="item-component"]')
+                .eq(1)
+                .should("contain.text", secondResult);
+            }
+          );
+        }
+      );
+    });
   });
 });

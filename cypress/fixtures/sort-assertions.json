@@ -1,0 +1,50 @@
+[
+  {
+    "sortBy": "title",
+    "orderBy": "asc",
+    "firstResult": "Barbacoa",
+    "secondResult": "Batidora"
+  },
+  {
+    "sortBy": "title",
+    "orderBy": "desc",
+    "firstResult": "iPhone 6S Oro",
+    "secondResult": "Vespa restaurada"
+  },
+  {
+    "sortBy": "description",
+    "orderBy": "asc",
+    "firstResult": "Piso en Clot",
+    "secondResult": "Barbacoa"
+  },
+  {
+    "sortBy": "description",
+    "orderBy": "desc",
+    "firstResult": "iPhone 6S Oro",
+    "secondResult": "Sofa de piel auténtica"
+  },
+  {
+    "sortBy": "email",
+    "orderBy": "asc",
+    "firstResult": "Cámara réflex",
+    "secondResult": "Bolso piel marca Hoss"
+  },
+  {
+    "sortBy": "email",
+    "orderBy": "desc",
+    "firstResult": "Reloj de Daniel Wellington",
+    "secondResult": "Lavadora"
+  },
+  {
+    "sortBy": "price",
+    "orderBy": "asc",
+    "firstResult": "Clases de piano",
+    "secondResult": "Material de oficina"
+  },
+  {
+    "sortBy": "price",
+    "orderBy": "desc",
+    "firstResult": "Piso en Clot",
+    "secondResult": "Coche antiguo americano"
+  }
+]
