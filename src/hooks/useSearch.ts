@@ -65,13 +65,19 @@ export function sortItems<T>(
  *
  * @see https://fusejs.io/
  */
-function useSearch<T>(
-  list: T[],
-  searchTerm: string,
-  sortBy: ItemField,
-  orderBy: "asc" | "desc",
-  fuseOptions?: Fuse.IFuseOptions<T>
-) {
+function useSearch<T>({
+  list,
+  searchTerm,
+  sortBy,
+  orderBy,
+  fuseOptions,
+}: {
+  list: T[];
+  searchTerm: string;
+  sortBy: ItemField;
+  orderBy: "asc" | "desc";
+  fuseOptions?: Fuse.IFuseOptions<T>;
+}) {
   const fuse = useMemo(() => {
     return new Fuse(list, fuseOptions);
   }, [list, fuseOptions]);

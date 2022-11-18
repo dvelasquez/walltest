@@ -12,13 +12,13 @@ describe("useSearch test suite", () => {
 
     assertions.forEach(({ searchTerm, results }) => {
       const { result } = renderHook(() =>
-        useSearch(
-          itemsFixture.items,
-          searchTerm,
-          "title",
-          "asc",
-          DEFAULT_SEARCH_OPTIONS
-        )
+        useSearch({
+          list: itemsFixture.items,
+          searchTerm: searchTerm,
+          sortBy: "title",
+          orderBy: "asc",
+          fuseOptions: DEFAULT_SEARCH_OPTIONS,
+        })
       );
       expect(result.current).toHaveLength(results);
     });
@@ -26,7 +26,13 @@ describe("useSearch test suite", () => {
 
   it("should return the full list if no searchTerm is provided", () => {
     const { result } = renderHook(() =>
-      useSearch(itemsFixture.items, "", "title", "asc", DEFAULT_SEARCH_OPTIONS)
+      useSearch({
+        list: itemsFixture.items,
+        searchTerm: "",
+        sortBy: "title",
+        orderBy: "asc",
+        fuseOptions: DEFAULT_SEARCH_OPTIONS,
+      })
     );
     expect(result.current).toHaveLength(itemsFixture.items.length);
   });
@@ -41,13 +47,13 @@ describe("useSearch test suite", () => {
 
     assertions.forEach((assertion) => {
       const { result } = renderHook(() =>
-        useSearch(
-          itemsFixture.items,
-          "",
-          assertion.sortBy,
-          assertion.orderBy,
-          DEFAULT_SEARCH_OPTIONS
-        )
+        useSearch({
+          list: itemsFixture.items,
+          searchTerm: "",
+          sortBy: assertion.sortBy,
+          orderBy: assertion.orderBy,
+          fuseOptions: DEFAULT_SEARCH_OPTIONS,
+        })
       );
       expect(result.current).toHaveLength(itemsFixture.items.length);
       expect(result.current[0].item.title).toBe(assertion.firstResult);

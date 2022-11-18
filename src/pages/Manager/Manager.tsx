@@ -37,13 +37,13 @@ const ManagerPage: React.FC = () => {
   }, [search]);
 
   // Update the results when the search context changes
-  const searchResult = useSearch<Item>(
-    data?.items || [],
-    search || "",
-    sortOptions.sortBy,
-    sortOptions.orderBy,
-    DEFAULT_SEARCH_OPTIONS
-  );
+  const searchResult = useSearch<Item>({
+    list: data?.items || [],
+    searchTerm: search || "",
+    sortBy: sortOptions.sortBy,
+    orderBy: sortOptions.orderBy,
+    fuseOptions: DEFAULT_SEARCH_OPTIONS,
+  });
 
   // Update the pagination when the search results change
   useEffect(() => {

@@ -12,6 +12,7 @@ import { itemsFixture } from "../../data/items/items.fixture";
 
 jest.mock("../../hooks/useSearch");
 jest.mock("../../data/items/getItems");
+jest.mock("../../components/Modal/ModalComponent");
 
 describe("Manager test suite", () => {
   it("should render an empty list if no results", async () => {
