@@ -2,7 +2,9 @@ import React from "react";
 import { Item } from "../../data/items/types";
 import style from "./ItemComponent.module.scss";
 
-const ItemComponent: React.FC<Item> = (item) => {
+const ItemComponent: React.FC<{
+  item: Item;
+}> = ({ item }) => {
   return (
     <div className={style.item} data-testid="item-component">
       <h2>{item.title}</h2>
@@ -15,6 +17,9 @@ const ItemComponent: React.FC<Item> = (item) => {
       <p>Description: {item.description}</p>
       <p>Email: {item.email}</p>
       <p>Price: {item.price}</p>
+      <p style={{ padding: "4px" }}>
+        <button>Favorite {item.favourite ? "♥" : "♡"}</button>
+      </p>
     </div>
   );
 };

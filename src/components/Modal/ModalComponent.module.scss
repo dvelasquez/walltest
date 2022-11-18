@@ -1,0 +1,15 @@
+@use "../../variables" as v;
+
+.dialog {
+  background-color: v.$background-primary-color;
+  border-radius: 40px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+  &::backdrop {
+    background-color: black;
+    opacity: 0.8;
+    overscroll-behavior: contain;
+  }
+}

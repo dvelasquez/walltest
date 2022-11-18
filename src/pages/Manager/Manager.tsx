@@ -5,12 +5,14 @@ import { getItems } from "../../data/items";
 import { ItemsResponse, Item, ItemField } from "../../data/items/types";
 import useSearch, { DEFAULT_SEARCH_OPTIONS } from "../../hooks/useSearch";
 import ItemNotFoundComponent from "../../components/Item/ItemNotFoundComponent";
+import ModalComponent from "../../components/Modal/ModalComponent";
 
 const ManagerPage: React.FC = () => {
   const [data, setData] = useState<ItemsResponse | null>(null);
   const [paginatedResults, setPaginatedResults] = useState<{ item: Item }[]>(
     []
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortOptions, setSortOptions] = useState<{
     sortBy: ItemField;
     orderBy: "asc" | "desc";
@@ -19,6 +21,7 @@ const ManagerPage: React.FC = () => {
     orderBy: "asc",
   });
   const [lastItem, setLastItem] = useState<number>(0);
+
   const search = useContext(SearchContext);
 
   // This hook is used to fetch the items from the API and only runs once
@@ -110,19 +113,16 @@ const ManagerPage: React.FC = () => {
           <option value="asc">Ascendente</option>
           <option value="desc">Descendente</option>
         </select>
+        <button onClick={() => setIsModalOpen(!isModalOpen)}>open modal</button>
+        <ModalComponent
+          isOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        ></ModalComponent>
       </div>
       <div data-testid="item-manager-list">
         {paginatedResults.length > 0 ? (
           paginatedResults.map(({ item }) => (
-            <ItemComponent
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              description={item.description}
-              image={item.image}
-              email={item.email}
-              price={item.price}
-            />
+            <ItemComponent key={item.id} item={item} />
           ))
         ) : (
           <ItemNotFoundComponent />

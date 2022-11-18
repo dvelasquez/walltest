@@ -5,6 +5,7 @@ export interface Item {
   price: string;
   email: string;
   image: string;
+  favourite?: boolean;
 }
 
 const ItemFields = ["title", "description", "email", "price"] as const;
