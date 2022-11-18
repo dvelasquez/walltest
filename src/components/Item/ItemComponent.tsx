@@ -8,20 +8,27 @@ const ItemComponent: React.FC<{
 }> = ({ item, handleFavourite }) => {
   return (
     <div className={style.item} data-testid="item-component">
-      <h2>{item.title}</h2>
-      <img
-        src={item.image}
-        loading="lazy"
-        className={style.item__image}
-        decoding="async"
-      />
-      <p>Description: {item.description}</p>
-      <p>Email: {item.email}</p>
-      <p>Price: {item.price}</p>
-      <p style={{ padding: "4px" }}>
+      <div className={style.item__section}>
+        <img
+          src={item.image}
+          loading="lazy"
+          className={style.item__image}
+          decoding="async"
+        />
+      </div>
+      <h2 className={style.item__section}>
+        {item.price}
+        {"€ "}
         <button onClick={handleFavourite}>
           Favorite {item.favourite ? "♥" : "♡"}
         </button>
+      </h2>
+      <h3 className={style.item__section}>{item.title}</h3>
+      <p className={style.item__section} style={{ fontSize: 8 }}>
+        {item.description}
+      </p>
+      <p className={style.item__section} style={{ fontSize: 8 }}>
+        {item.email}
       </p>
     </div>
   );

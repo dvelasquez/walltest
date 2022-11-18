@@ -2,14 +2,32 @@
 
 .dialog {
   background-color: v.$background-primary-color;
-  border-radius: 40px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 16px;
   width: 100%;
   max-width: 500px;
-  &::backdrop {
-    background-color: black;
-    opacity: 0.8;
+  height: 100vh;
+  top: 66px;
+  bottom: 0;
+  border: 0;
+  &::backdrop {   
     overscroll-behavior: contain;
+    background-color: v.$background-secondary-color;
   }
+}
+
+.favourite {  
+  width: 100%;
+  height: 80px;
+  border-radius: 40px;
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    &__image {
+      height: 80px;
+    }
+  }
+ 
 }

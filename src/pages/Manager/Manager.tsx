@@ -6,6 +6,7 @@ import { ItemsResponse, Item, ItemField } from "../../data/items/types";
 import useSearch, { DEFAULT_SEARCH_OPTIONS } from "../../hooks/useSearch";
 import ItemNotFoundComponent from "../../components/Item/ItemNotFoundComponent";
 import ModalComponent from "../../components/Modal/ModalComponent";
+import styles from "./Manager.module.scss";
 
 const ManagerPage: React.FC = () => {
   const [data, setData] = useState<ItemsResponse | null>(null);
@@ -142,9 +143,10 @@ const ManagerPage: React.FC = () => {
         <ModalComponent
           isOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+          searchResult={searchResult}
         ></ModalComponent>
       </div>
-      <div data-testid="item-manager-list">
+      <div data-testid="item-manager-list" className={styles.manager__list}>
         {paginatedResults.length > 0 ? (
           paginatedResults.map(({ item }) => (
             <ItemComponent
