@@ -12,7 +12,9 @@ describe("ItemComponent test suite", () => {
       image: "https://wallapop.com/image.jpg",
       price: "100",
     };
-    const { getByText } = render(<ItemComponent item={item} />);
+    const { getByText } = render(
+      <ItemComponent item={item} handleFavourite={jest.fn()} />
+    );
     expect(getByText(item.title)).toBeInTheDocument();
   });
 });

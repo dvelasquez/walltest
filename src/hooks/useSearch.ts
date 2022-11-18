@@ -52,6 +52,16 @@ export function sortItems<T>(
   });
 }
 
+export function isFavourite(
+  item: Item,
+  favouritedItems: { id: number; isFavourite: boolean }[]
+) {
+  const favourite = favouritedItems.find(
+    (favourite) => favourite.id === item.id
+  );
+  return favourite ? favourite.isFavourite : false;
+}
+
 /**
  * A React Hook that filters an array using the Fuse.js fuzzy-search library.
  *
@@ -67,12 +77,14 @@ export function sortItems<T>(
  */
 function useSearch<T>({
   list,
+  favouritedItems,
   searchTerm,
   sortBy,
   orderBy,
   fuseOptions,
 }: {
   list: T[];
+  favouritedItems: { id: number; isFavourite: boolean }[];
   searchTerm: string;
   sortBy: ItemField;
   orderBy: "asc" | "desc";
@@ -86,13 +98,18 @@ function useSearch<T>({
     if (!searchTerm) {
       return sortItems(
         list.map((item: T) => {
-          return { item: item };
+          return {
+            item: {
+              ...item,
+              favourite: isFavourite(item as Item, favouritedItems),
+            },
+          };
         }),
         { sortBy, orderBy }
       );
     }
     return sortItems(fuse.search(searchTerm), { sortBy, orderBy });
-  }, [fuse, searchTerm, list, sortBy, orderBy]);
+  }, [fuse, searchTerm, list, sortBy, orderBy, favouritedItems]);
 
   return results;
 }

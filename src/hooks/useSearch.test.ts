@@ -14,6 +14,7 @@ describe("useSearch test suite", () => {
       const { result } = renderHook(() =>
         useSearch({
           list: itemsFixture.items,
+          favouritedItems: [],
           searchTerm: searchTerm,
           sortBy: "title",
           orderBy: "asc",
@@ -28,6 +29,7 @@ describe("useSearch test suite", () => {
     const { result } = renderHook(() =>
       useSearch({
         list: itemsFixture.items,
+        favouritedItems: [],
         searchTerm: "",
         sortBy: "title",
         orderBy: "asc",
@@ -49,6 +51,7 @@ describe("useSearch test suite", () => {
       const { result } = renderHook(() =>
         useSearch({
           list: itemsFixture.items,
+          favouritedItems: [],
           searchTerm: "",
           sortBy: assertion.sortBy,
           orderBy: assertion.orderBy,

@@ -22,13 +22,18 @@ const ManagerPage: React.FC = () => {
   });
   const [lastItem, setLastItem] = useState<number>(0);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [favouritedItems, setFavouritedItems] = useState<
+    { id: number; isFavourite: boolean }[]
+  >([]);
 
   const search = useContext(SearchContext);
 
   // This hook is used to fetch the items from the API and only runs once
   useEffect(() => {
     getItems().then((response) => {
-      setData(response);
+      setData({
+        items: response.items.map((item) => ({ ...item, favourite: false })),
+      });
     });
   }, []);
 
@@ -44,6 +49,7 @@ const ManagerPage: React.FC = () => {
   // Update the results when the search context changes
   const searchResult = useSearch<Item>({
     list: data?.items || [],
+    favouritedItems,
     searchTerm: search || "",
     sortBy: sortOptions.sortBy,
     orderBy: sortOptions.orderBy,
@@ -96,6 +102,19 @@ const ManagerPage: React.FC = () => {
     setLastItem(0);
   };
 
+  const handleFavourite = (item: Item) => {
+    setScrollPosition(window.pageYOffset);
+    const isFavourite = !item.favourite;
+    const updatedFavouritedItems = favouritedItems.filter(
+      (favourite) => favourite.id !== item.id
+    );
+    if (isFavourite) {
+      updatedFavouritedItems.push({ id: item.id, isFavourite });
+    }
+    setFavouritedItems(updatedFavouritedItems);
+    item.favourite = isFavourite;
+  };
+
   return (
     <>
       <div data-testid="item-sorter">
@@ -128,7 +147,11 @@ const ManagerPage: React.FC = () => {
       <div data-testid="item-manager-list">
         {paginatedResults.length > 0 ? (
           paginatedResults.map(({ item }) => (
-            <ItemComponent key={item.id} item={item} />
+            <ItemComponent
+              key={item.id}
+              item={item}
+              handleFavourite={() => handleFavourite(item)}
+            />
           ))
         ) : (
           <ItemNotFoundComponent />

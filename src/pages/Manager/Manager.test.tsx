@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  render,
-  waitFor,
-  screen,
-  getAllByTestId,
-} from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import ManagerPage from "./Manager";
 import useSearch from "../../hooks/useSearch";
 import { getItems } from "../../data/items";

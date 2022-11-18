@@ -4,7 +4,8 @@ import style from "./ItemComponent.module.scss";
 
 const ItemComponent: React.FC<{
   item: Item;
-}> = ({ item }) => {
+  handleFavourite: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}> = ({ item, handleFavourite }) => {
   return (
     <div className={style.item} data-testid="item-component">
       <h2>{item.title}</h2>
@@ -18,7 +19,9 @@ const ItemComponent: React.FC<{
       <p>Email: {item.email}</p>
       <p>Price: {item.price}</p>
       <p style={{ padding: "4px" }}>
-        <button>Favorite {item.favourite ? "♥" : "♡"}</button>
+        <button onClick={handleFavourite}>
+          Favorite {item.favourite ? "♥" : "♡"}
+        </button>
       </p>
     </div>
   );
