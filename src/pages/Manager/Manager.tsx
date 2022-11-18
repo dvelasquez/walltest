@@ -21,6 +21,7 @@ const ManagerPage: React.FC = () => {
     orderBy: "asc",
   });
   const [lastItem, setLastItem] = useState<number>(0);
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
 
   const search = useContext(SearchContext);
 
@@ -35,6 +36,10 @@ const ManagerPage: React.FC = () => {
   useEffect(() => {
     setLastItem(0);
   }, [search]);
+
+  useEffect(() => {
+    window.scrollTo(0, scrollPosition);
+  }, [scrollPosition]);
 
   // Update the results when the search context changes
   const searchResult = useSearch<Item>({
@@ -62,11 +67,12 @@ const ManagerPage: React.FC = () => {
       setPaginatedResults([]);
       setLastItem(0);
     }
-  }, [searchResult, lastItem, search]);
+  }, [searchResult, lastItem, search, scrollPosition]);
 
   // Paginate the results, adding 5 more items to the list until everything is shown
   const handleLoadMore = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setScrollPosition(window.pageYOffset);
     const nextLastItem = lastItem + 5;
     setPaginatedResults([
       ...paginatedResults,
