@@ -9,6 +9,7 @@ import {
   htmlPluginConfig,
   sassConfig,
 } from "./webpack.shared.config";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -27,6 +28,7 @@ const config: Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin(htmlPluginConfig),
     new MiniCssExtractPlugin(),
     new ForkTsCheckerWebpackPlugin({

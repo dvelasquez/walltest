@@ -1,5 +1,6 @@
 import React, { createRef, useEffect } from "react";
 import { Item } from "../../data/items/types";
+import FavouriteItem from "../FavouriteItem/FavouriteItem";
 import styles from "./ModalComponent.module.scss";
 
 const ModalComponent = ({
@@ -34,34 +35,19 @@ const ModalComponent = ({
   }, [isOpen, ref, pageBody]);
 
   return (
-    <dialog ref={ref} className={styles.dialog}>
-      <h2>This is my first modal after all</h2>
-      <h3>Im going to use the dialog element</h3>
-      <mark>Definiton of a the dialog element based on HTML 5.2 spec</mark>
-      <div>
-        {searchResult.map(
-          ({ item }) =>
-            item.favourite && (
-              <div key={item.id} className={styles.favourite}>
-                <div className={styles.favourite__container}>
-                  <img
-                    className={styles.favourite__container__image}
-                    src={item.image}
-                    alt={`Imagen de ${item.title}`}
-                  />
-                  <div className={styles.favourite__container__options}>
-                    <h3>{item.title}</h3>
-                    <button>🗑</button>
-                  </div>
-                </div>
-              </div>
-            )
-        )}
-      </div>
-      <div className="interacte">
-        <button className="modal-btn" onClick={() => setIsModalOpen(!isOpen)}>
-          Close
-        </button>
+    <dialog ref={ref} className={styles.dialog} data-testid="modal-container">
+      <div className={styles.dialog__container}>
+        <h2>Lista Favoritos</h2>
+        <div className={styles.dialog__list}>
+          {searchResult.map(
+            ({ item }) => item.favourite && <FavouriteItem item={item} />
+          )}
+        </div>
+        <div className={styles.dialog__footer}>
+          <button className="modal-btn" onClick={() => setIsModalOpen(!isOpen)}>
+            Close
+          </button>
+        </div>
       </div>
     </dialog>
   );

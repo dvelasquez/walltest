@@ -1,5 +1,4 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-
 export const htmlPluginConfig = {
   template: "src/index.html",
   favicon: "public/favicon.ico",
@@ -18,6 +17,7 @@ export const compilerConfigBabel = {
         "@babel/preset-react",
         "@babel/preset-typescript",
       ],
+      plugins: [require.resolve("react-refresh/babel")],
     },
   },
 };
