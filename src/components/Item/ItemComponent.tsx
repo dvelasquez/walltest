@@ -15,6 +15,7 @@ const ItemComponent: React.FC<{
     <div className={style.item} data-testid="item-component">
       <div className={style.item__section}>
         <img
+          height="253px"
           src={item.image}
           loading="lazy"
           className={style.item__image}

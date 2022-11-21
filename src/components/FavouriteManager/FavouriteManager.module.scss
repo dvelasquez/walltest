@@ -4,5 +4,6 @@
   background-color: v.$background-secondary-color;
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   width:100%;
 }

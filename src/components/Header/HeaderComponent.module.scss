@@ -15,4 +15,21 @@
     height: 24.56px;
     width: 100px;
   }
+  &__spacing {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    height: 100px;
+    &__logo {
+      height: 36.84px;
+      width: 150px;
+    }
+    &__spacing {
+      display: block;
+      width: 150px;
+    }
+  }
 }

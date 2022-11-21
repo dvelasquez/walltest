@@ -50,3 +50,12 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  .manager{
+    &__list {
+      grid-template-columns: 24% 24% 24% 24%;
+    }
+    
+  }
+}
