@@ -15,6 +15,7 @@ const HeaderComponent: React.FC<SearchComponentProps> = ({
         alt="Wallapop logo"
       />
       <SearchBar search={search} handleSearchChange={handleSearchChange} />
+      <span className={style.header__spacing}></span>
     </header>
   );
 };

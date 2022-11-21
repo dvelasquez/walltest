@@ -18,6 +18,9 @@ const LayoutComponent: React.FC<PropsWithChildren> = ({ children }) => {
           search={search}
         />
         <main className={style.main}> {children} </main>
+        <footer>
+          <p>Walltest by Danilo Velasquez</p>
+        </footer>
       </div>
     </SearchContext.Provider>
   );
