@@ -1,0 +1,9 @@
+@use '../../variables' as v;
+
+.searchbar {
+  width: 100%;
+  height: 40px;
+  border-radius: 21px;
+  border: 1px solid v.$border_color;
+  max-width: 400px;
+}
