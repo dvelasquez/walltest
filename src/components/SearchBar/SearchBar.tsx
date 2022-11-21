@@ -14,6 +14,7 @@ const SearchBar = ({ search, handleSearchChange }: SearchComponentProps) => {
       value={search}
       onChange={handleSearchChange}
       data-testid="header-searchbar"
+      placeholder="Ingresa tu búsqueda"
     />
   );
 };

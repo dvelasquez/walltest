@@ -144,6 +144,7 @@ const ManagerPage: React.FC = () => {
           isOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
           searchResult={searchResult}
+          favouritedItems={favouritedItems}
         ></ModalComponent>
       </div>
       <div data-testid="item-manager-list" className={styles.manager__list}>
