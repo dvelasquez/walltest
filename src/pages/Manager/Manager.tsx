@@ -9,6 +9,7 @@ import ModalComponent from "../../components/Modal/ModalComponent";
 import styles from "./Manager.module.scss";
 import { paginateItems } from "./paginateItems";
 import FavouriteManager from "../../components/FavouriteManager/FavouriteManager";
+import SortSelectors from "../../components/SortSelectors/SortSelectors";
 
 const ManagerPage: React.FC = () => {
   const [data, setData] = useState<ItemsResponse | null>(null);
@@ -112,41 +113,23 @@ const ManagerPage: React.FC = () => {
 
   return (
     <>
-      <div data-testid="item-sorter">
-        <select
-          name="sort-field"
-          id="sort-field"
-          data-testid="select-sort-field"
-          onChange={handleSortChange}
-        >
-          <option value="title">Titulo</option>
-          <option value="price">Precio</option>
-          <option value="description">Descripcion</option>
-          <option value="email">E-Mail</option>
-        </select>
-        <select
-          name="sort-order"
-          id="sort-order"
-          data-testid="select-sort-order"
-          onChange={handleSortChange}
-        >
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
-        <button
-          data-testid="open-modal-button"
-          onClick={() => setIsModalOpen(!isModalOpen)}
-        >
-          open modal
-        </button>
-        <ModalComponent isOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-          <FavouriteManager
-            searchResult={searchResult}
-            favouritedItems={favouritedItems}
-            handleFavourite={handleFavourite}
-          />
-        </ModalComponent>
+      <div data-testid="item-sorter" className={styles.manager__sorters}>
+        <SortSelectors handleSortChange={handleSortChange} />
       </div>
+      <button
+        className={styles.manager__modalbutton}
+        data-testid="open-modal-button"
+        onClick={() => setIsModalOpen(!isModalOpen)}
+      >
+        ♥ Favoritos
+      </button>
+      <ModalComponent isOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        <FavouriteManager
+          searchResult={searchResult}
+          favouritedItems={favouritedItems}
+          handleFavourite={handleFavourite}
+        />
+      </ModalComponent>
       <div data-testid="item-manager-list" className={styles.manager__list}>
         {paginatedResults.length > 0 ? (
           paginatedResults.map(({ item }) => (

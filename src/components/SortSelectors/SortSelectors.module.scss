@@ -1,0 +1,16 @@
+@use "../../variables" as v;
+
+.sort__select {
+  padding: 0 10px;
+  background-color: v.$primary-color;
+  border-radius: 40px;
+  color: v.$background-primary-color;
+  font-size: 16px;
+  font-weight: 400;
+  border: 2px solid v.$primary-color;
+
+  & > option {
+    background-color: v.$background-primary-color;
+    color: v.$primary-color;
+  }
+}
