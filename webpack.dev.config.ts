@@ -15,6 +15,11 @@ interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
 
+const babelConfig = compilerConfigBabel;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+babelConfig.use.options.plugins.push(require.resolve("react-refresh/babel"));
+
 const config: Configuration = {
   mode: "development",
   output: {
