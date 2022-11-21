@@ -42,7 +42,7 @@ const ModalComponent = ({
             className={styles.dialog__footer__close}
             onClick={() => setIsModalOpen(!isOpen)}
           >
-            Close
+            Cerrar
           </button>
         </div>
       </div>

@@ -1,5 +1,26 @@
 @use "../../variables" as v;
 .manager{
+  
+  &__sorters {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  &__modalbutton {
+    position: fixed;
+    right: 32px;
+    bottom: 60px;
+    border: 2px solid v.$primary-color;
+    background-color: v.$primary-color;
+    border-radius: 40px;
+    color: v.$background-primary-color;
+    font-size: 18px;
+    font-weight: 400;
+    box-shadow: 5px 5px 8px grey;
+    padding: 5px;
+  }
 
   &__list {
     display: grid;
