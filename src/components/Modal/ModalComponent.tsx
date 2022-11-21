@@ -1,16 +1,14 @@
 import React, { createRef, useEffect } from "react";
-import { Item } from "../../data/items/types";
-import FavouriteItem from "../FavouriteItem/FavouriteItem";
 import styles from "./ModalComponent.module.scss";
 
 const ModalComponent = ({
   isOpen,
   setIsModalOpen,
-  searchResult,
+  children,
 }: {
   isOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  searchResult: { item: Item }[];
+  children: React.ReactNode;
 }) => {
   const ref = createRef<HTMLDialogElement>();
   const pageBody = document.querySelector("body");
@@ -20,7 +18,7 @@ const ModalComponent = ({
       if (isOpen) {
         const scrollY =
           document.documentElement.style.getPropertyValue("--scroll-y");
-        ref.current?.showModal();
+        if (!ref.current?.open) ref.current?.showModal();
         pageBody.style.position = "fixed";
         pageBody.style.top = `-${scrollY}`;
       } else {
@@ -37,14 +35,13 @@ const ModalComponent = ({
   return (
     <dialog ref={ref} className={styles.dialog} data-testid="modal-container">
       <div className={styles.dialog__container}>
-        <h2>Lista Favoritos</h2>
-        <div className={styles.dialog__list}>
-          {searchResult.map(
-            ({ item }) => item.favourite && <FavouriteItem item={item} />
-          )}
-        </div>
+        {children}
         <div className={styles.dialog__footer}>
-          <button className="modal-btn" onClick={() => setIsModalOpen(!isOpen)}>
+          <button
+            data-testid="modal-close"
+            className={styles.dialog__footer__close}
+            onClick={() => setIsModalOpen(!isOpen)}
+          >
             Close
           </button>
         </div>

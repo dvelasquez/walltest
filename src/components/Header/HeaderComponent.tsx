@@ -1,12 +1,8 @@
 import React from "react";
+import SearchBar, { SearchComponentProps } from "../SearchBar/SearchBar";
 import style from "./HeaderComponent.module.scss";
 
-export interface HeaderComponentProps {
-  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  search: string;
-}
-
-const HeaderComponent: React.FC<HeaderComponentProps> = ({
+const HeaderComponent: React.FC<SearchComponentProps> = ({
   handleSearchChange,
   search,
 }) => {
@@ -18,13 +14,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
         data-testid="header-logo"
         alt="Wallapop logo"
       />
-      <input
-        className={style.header__searchbar}
-        type="text"
-        value={search}
-        onChange={handleSearchChange}
-        data-testid="header-searchbar"
-      />
+      <SearchBar search={search} handleSearchChange={handleSearchChange} />
     </header>
   );
 };

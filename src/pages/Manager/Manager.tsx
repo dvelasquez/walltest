@@ -7,6 +7,8 @@ import useSearch, { DEFAULT_SEARCH_OPTIONS } from "../../hooks/useSearch";
 import ItemNotFoundComponent from "../../components/Item/ItemNotFoundComponent";
 import ModalComponent from "../../components/Modal/ModalComponent";
 import styles from "./Manager.module.scss";
+import { paginateItems } from "./paginateItems";
+import FavouriteManager from "../../components/FavouriteManager/FavouriteManager";
 
 const ManagerPage: React.FC = () => {
   const [data, setData] = useState<ItemsResponse | null>(null);
@@ -59,22 +61,14 @@ const ManagerPage: React.FC = () => {
 
   // Update the pagination when the search results change
   useEffect(() => {
-    // Paginate only if this is the first time we are rendering the results
-    // and if we have more than 5 results
-    if (searchResult.length > 5 && lastItem === 0) {
-      const nextLastItem = lastItem + 5;
-      setPaginatedResults(searchResult.slice(lastItem, nextLastItem));
-      setLastItem(nextLastItem);
-    }
-    // reset the pagination if the search results change
-    else if (searchResult.length > 0 && searchResult.length <= 5) {
-      setPaginatedResults(searchResult);
-      setLastItem(0);
-    } else if (searchResult.length === 0 && search.length > 0) {
-      setPaginatedResults([]);
-      setLastItem(0);
-    }
-  }, [searchResult, lastItem, search, scrollPosition]);
+    paginateItems({
+      searchResult,
+      lastItem,
+      setLastItem,
+      setPaginatedResults,
+      search,
+    });
+  }, [searchResult, lastItem, search, scrollPosition, favouritedItems]);
 
   // Paginate the results, adding 5 more items to the list until everything is shown
   const handleLoadMore = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -139,12 +133,19 @@ const ManagerPage: React.FC = () => {
           <option value="asc">Ascendente</option>
           <option value="desc">Descendente</option>
         </select>
-        <button onClick={() => setIsModalOpen(!isModalOpen)}>open modal</button>
-        <ModalComponent
-          isOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          searchResult={searchResult}
-        ></ModalComponent>
+        <button
+          data-testid="open-modal-button"
+          onClick={() => setIsModalOpen(!isModalOpen)}
+        >
+          open modal
+        </button>
+        <ModalComponent isOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+          <FavouriteManager
+            searchResult={searchResult}
+            favouritedItems={favouritedItems}
+            handleFavourite={handleFavourite}
+          />
+        </ModalComponent>
       </div>
       <div data-testid="item-manager-list" className={styles.manager__list}>
         {paginatedResults.length > 0 ? (
@@ -158,14 +159,21 @@ const ManagerPage: React.FC = () => {
         ) : (
           <ItemNotFoundComponent />
         )}
-        {lastItem <= paginatedResults.length ? (
+        {lastItem >= paginatedResults.length &&
+        lastItem <= paginatedResults.length ? (
           <>
-            <button data-testid="button-load-more" onClick={handleLoadMore}>
+            <button
+              className={styles.manager__list__load_more}
+              data-testid="button-load-more"
+              onClick={handleLoadMore}
+            >
               Cargar mas
             </button>
           </>
         ) : (
-          <p>No hay mas resultados</p>
+          <p className={styles.manager__list__no_results}>
+            No hay mas resultados
+          </p>
         )}
       </div>
     </>
