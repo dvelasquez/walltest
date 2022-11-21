@@ -6,6 +6,7 @@ import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CopyPlugin from "copy-webpack-plugin";
+// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import {
   compilerConfigBabel,
   htmlPluginConfig,
@@ -44,6 +45,7 @@ const config: Configuration = {
       extensions: ["js", "jsx", "ts", "tsx"],
     }),
     new CleanWebpackPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };
 

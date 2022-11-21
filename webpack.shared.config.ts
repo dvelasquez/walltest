@@ -17,7 +17,7 @@ export const compilerConfigBabel = {
         "@babel/preset-react",
         "@babel/preset-typescript",
       ],
-      plugins: [require.resolve("react-refresh/babel")],
+      plugins: [],
     },
   },
 };
