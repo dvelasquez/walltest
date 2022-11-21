@@ -26,7 +26,11 @@ export const paginateItems = ({
     setPaginatedResults(searchResult);
     setLastItem(0);
   } else if (searchResult.length === 0 && search.length > 0) {
+    // if no results, reset the pagination
     setPaginatedResults([]);
     setLastItem(0);
+  } else {
+    // items have changed, but no search nor pagination has been done
+    setPaginatedResults(searchResult.slice(0, lastItem));
   }
 };

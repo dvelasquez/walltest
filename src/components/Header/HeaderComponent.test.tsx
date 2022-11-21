@@ -22,7 +22,7 @@ describe("HeaderComponent test suite", () => {
     const { getByTestId } = render(
       <HeaderComponent handleSearchChange={mockHandleSearchChange} search="" />
     );
-    const headerSearchbar = getByTestId("header-searchbar");
+    const headerSearchbar = getByTestId("searchbar");
     expect(headerSearchbar).toBeInTheDocument();
   });
   it("should call the handleSearchChange mock if something is typed in the input", async () => {
@@ -30,7 +30,7 @@ describe("HeaderComponent test suite", () => {
       <HeaderComponent handleSearchChange={mockHandleSearchChange} search="" />
     );
     const searchString = "test search";
-    const headerSearchbar = getByTestId("header-searchbar");
+    const headerSearchbar = getByTestId("searchbar");
     await userEvent.type(headerSearchbar, searchString);
     expect(mockHandleSearchChange).toHaveBeenCalledTimes(searchString.length);
   });

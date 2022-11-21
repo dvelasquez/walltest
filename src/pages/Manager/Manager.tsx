@@ -67,7 +67,7 @@ const ManagerPage: React.FC = () => {
       setPaginatedResults,
       search,
     });
-  }, [searchResult, lastItem, search, scrollPosition]);
+  }, [searchResult, lastItem, search, scrollPosition, favouritedItems]);
 
   // Paginate the results, adding 5 more items to the list until everything is shown
   const handleLoadMore = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -97,6 +97,7 @@ const ManagerPage: React.FC = () => {
   };
 
   const handleFavourite = (item: Item) => {
+    debugger;
     setScrollPosition(window.pageYOffset);
     const isFavourite = !item.favourite;
     const updatedFavouritedItems = favouritedItems.filter(
@@ -132,12 +133,18 @@ const ManagerPage: React.FC = () => {
           <option value="asc">Ascendente</option>
           <option value="desc">Descendente</option>
         </select>
-        <button onClick={() => setIsModalOpen(!isModalOpen)}>open modal</button>
+        <button
+          data-testid="open-modal-button"
+          onClick={() => setIsModalOpen(!isModalOpen)}
+        >
+          open modal
+        </button>
         <ModalComponent
           isOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
           searchResult={searchResult}
           favouritedItems={favouritedItems}
+          handleFavourite={handleFavourite}
         ></ModalComponent>
       </div>
       <div data-testid="item-manager-list" className={styles.manager__list}>
@@ -152,14 +159,21 @@ const ManagerPage: React.FC = () => {
         ) : (
           <ItemNotFoundComponent />
         )}
-        {lastItem <= paginatedResults.length ? (
+        {lastItem >= paginatedResults.length &&
+        lastItem <= paginatedResults.length ? (
           <>
-            <button data-testid="button-load-more" onClick={handleLoadMore}>
+            <button
+              className={styles.manager__list__load_more}
+              data-testid="button-load-more"
+              onClick={handleLoadMore}
+            >
               Cargar mas
             </button>
           </>
         ) : (
-          <p>No hay mas resultados</p>
+          <p className={styles.manager__list__no_results}>
+            No hay mas resultados
+          </p>
         )}
       </div>
     </>

@@ -27,7 +27,10 @@ const ItemComponent: React.FC<{
         {currency}
         <button
           onClick={handleFavourite}
-          data-testId="item-favourite"
+          data-testid="item-favourite-button"
+          data-state={
+            item.favourite ? "favourite-active" : "favourite-inactive"
+          }
           className={style.item__section__favourite_button}
         >
           {item.favourite ? "♥" : "♡"}

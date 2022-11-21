@@ -35,7 +35,8 @@
       &__button {
         width: 40px;
         height: 40px;
-        background-color: v.$background-primary-color;
+        background-color: transparent;
+        color: v.$primary-color;
         padding: 0;
         border: none;
         font-size: xx-large;

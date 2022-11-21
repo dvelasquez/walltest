@@ -10,11 +10,13 @@ const ModalComponent = ({
   setIsModalOpen,
   searchResult,
   favouritedItems,
+  handleFavourite,
 }: {
   isOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   searchResult: { item: Item }[];
   favouritedItems: { id: number; isFavourite: boolean }[];
+  handleFavourite: (item: Item) => void;
 }) => {
   const ref = createRef<HTMLDialogElement>();
   const pageBody = document.querySelector("body");
@@ -70,11 +72,21 @@ const ModalComponent = ({
         <div className={styles.dialog__list}>
           {filteredResults.map(
             ({ item }) =>
-              item.favourite && <FavouriteItem key={item.id} item={item} />
+              item.favourite && (
+                <FavouriteItem
+                  key={item.id}
+                  item={item}
+                  handleFavourite={handleFavourite}
+                />
+              )
           )}
         </div>
         <div className={styles.dialog__footer}>
-          <button className="modal-btn" onClick={() => setIsModalOpen(!isOpen)}>
+          <button
+            data-testid="modal-close"
+            className={styles.dialog__footer__close}
+            onClick={() => setIsModalOpen(!isOpen)}
+          >
             Close
           </button>
         </div>
