@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.config.ts",
     "build": "webpack --config webpack.prod.config.ts",
+    "lint": "eslint . --ext .ts,.tsx",
     "test": "jest",
     "e2e": "cypress open"
   },
