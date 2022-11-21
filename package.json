@@ -68,7 +68,7 @@
     "react-dom": "18.2.0"
   },
   "volta": {
-    "node": "17.9.1"
+    "node": "16.18.1"
   },
   "browserslist": [
     "defaults and supports es6-module"
