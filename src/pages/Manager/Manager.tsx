@@ -8,6 +8,7 @@ import ItemNotFoundComponent from "../../components/Item/ItemNotFoundComponent";
 import ModalComponent from "../../components/Modal/ModalComponent";
 import styles from "./Manager.module.scss";
 import { paginateItems } from "./paginateItems";
+import FavouriteManager from "../../components/FavouriteManager/FavouriteManager";
 
 const ManagerPage: React.FC = () => {
   const [data, setData] = useState<ItemsResponse | null>(null);
@@ -97,7 +98,6 @@ const ManagerPage: React.FC = () => {
   };
 
   const handleFavourite = (item: Item) => {
-    debugger;
     setScrollPosition(window.pageYOffset);
     const isFavourite = !item.favourite;
     const updatedFavouritedItems = favouritedItems.filter(
@@ -139,13 +139,13 @@ const ManagerPage: React.FC = () => {
         >
           open modal
         </button>
-        <ModalComponent
-          isOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          searchResult={searchResult}
-          favouritedItems={favouritedItems}
-          handleFavourite={handleFavourite}
-        ></ModalComponent>
+        <ModalComponent isOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+          <FavouriteManager
+            searchResult={searchResult}
+            favouritedItems={favouritedItems}
+            handleFavourite={handleFavourite}
+          />
+        </ModalComponent>
       </div>
       <div data-testid="item-manager-list" className={styles.manager__list}>
         {paginatedResults.length > 0 ? (

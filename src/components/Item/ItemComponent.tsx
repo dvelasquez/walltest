@@ -10,6 +10,7 @@ const ItemComponent: React.FC<{
     style: "currency",
     currency: "EUR",
   }).format(parseFloat(item.price));
+
   return (
     <div className={style.item} data-testid="item-component">
       <div className={style.item__section}>

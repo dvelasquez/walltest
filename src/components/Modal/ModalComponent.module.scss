@@ -24,13 +24,6 @@
     top: 0;
   }
 
-  &__list {
-    background-color: v.$background-secondary-color;
-    flex-grow: 1;
-    overflow-y: auto;
-    width:100%;
-  }
-
   &__footer {
     position: sticky;
     bottom: 0;
