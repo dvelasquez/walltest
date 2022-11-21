@@ -29,9 +29,11 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "@types/testing-library__jest-dom": "5.14.5",
     "@typescript-eslint/eslint-plugin": "5.43.0",
     "@typescript-eslint/parser": "5.43.0",
     "babel-loader": "9.1.0",
+    "browserslist": "4.21.4",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.2",
@@ -65,5 +67,8 @@
   },
   "volta": {
     "node": "18.12.1"
-  }
+  },
+  "browserslist": [
+    "defaults and supports es6-module"
+  ]
 }
