@@ -6,7 +6,7 @@ describe("ItemManager spec", () => {
     });
     it("should display the logo and the searchbar in the header", () => {
       cy.get('[data-testid="header-logo"]').should("exist");
-      cy.get('[data-testid="header-searchbar"]').should("exist");
+      cy.get('[data-testid="searchbar"]').should("exist");
     });
     it("should render max 5 elements if there is no search", () => {
       cy.get('[data-testid="item-component"]').should("have.length", 5);
@@ -18,7 +18,7 @@ describe("ItemManager spec", () => {
       cy.get('[data-testid="item-component"]').should("have.length", 10);
     });
     it('should render "No results" if there is no match', () => {
-      cy.get('[data-testid="header-searchbar"]').type("asdasfasdfads");
+      cy.get('[data-testid="searchbar"]').type("asdasfasdfads");
       cy.get('[data-testid="item-component"]').should("have.length", 0);
       cy.get('[data-testid="item-component__no-results"]').should("exist");
     });
@@ -31,7 +31,7 @@ describe("ItemManager spec", () => {
           }[]
         ) => {
           searchAssertions.forEach(({ searchTerm, results }) => {
-            cy.get('[data-testid="header-searchbar"]').clear().type(searchTerm);
+            cy.get('[data-testid="searchbar"]').clear().type(searchTerm);
             cy.get('[data-testid="item-component"]').should(
               "have.length",
               results
@@ -53,7 +53,7 @@ describe("ItemManager spec", () => {
           sortAssertions.forEach(
             ({ sortBy, orderBy, firstResult, secondResult }) => {
               cy.log(`Sorting by ${sortBy} in ${orderBy} order`);
-              cy.get('[data-testid="header-searchbar"]').clear();
+              cy.get('[data-testid="searchbar"]').clear();
               cy.get('[data-testid="select-sort-field"]').select(sortBy);
               cy.get('[data-testid="select-sort-order"]').select(orderBy);
               cy.wait(100); // wait for the items to be sorted

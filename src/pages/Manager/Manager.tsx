@@ -7,6 +7,7 @@ import useSearch, { DEFAULT_SEARCH_OPTIONS } from "../../hooks/useSearch";
 import ItemNotFoundComponent from "../../components/Item/ItemNotFoundComponent";
 import ModalComponent from "../../components/Modal/ModalComponent";
 import styles from "./Manager.module.scss";
+import { paginateItems } from "./paginateItems";
 
 const ManagerPage: React.FC = () => {
   const [data, setData] = useState<ItemsResponse | null>(null);
@@ -59,21 +60,13 @@ const ManagerPage: React.FC = () => {
 
   // Update the pagination when the search results change
   useEffect(() => {
-    // Paginate only if this is the first time we are rendering the results
-    // and if we have more than 5 results
-    if (searchResult.length > 5 && lastItem === 0) {
-      const nextLastItem = lastItem + 5;
-      setPaginatedResults(searchResult.slice(lastItem, nextLastItem));
-      setLastItem(nextLastItem);
-    }
-    // reset the pagination if the search results change
-    else if (searchResult.length > 0 && searchResult.length <= 5) {
-      setPaginatedResults(searchResult);
-      setLastItem(0);
-    } else if (searchResult.length === 0 && search.length > 0) {
-      setPaginatedResults([]);
-      setLastItem(0);
-    }
+    paginateItems({
+      searchResult,
+      lastItem,
+      setLastItem,
+      setPaginatedResults,
+      search,
+    });
   }, [searchResult, lastItem, search, scrollPosition]);
 
   // Paginate the results, adding 5 more items to the list until everything is shown

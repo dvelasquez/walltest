@@ -61,7 +61,11 @@ const ModalComponent = ({
       <div className={styles.dialog__container}>
         <h2>Lista Favoritos</h2>
         <div>
-          <SearchBar search={search} handleSearchChange={handleSearchChange} />
+          <SearchBar
+            search={search}
+            handleSearchChange={handleSearchChange}
+            testId="modal"
+          />
         </div>
         <div className={styles.dialog__list}>
           {filteredResults.map(
