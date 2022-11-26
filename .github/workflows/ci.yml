@@ -76,7 +76,7 @@ jobs:
           install: false
           record: true
           start: pnpm build:run
-          wait-on: 'http://127.0.0.1:8080/'
+          wait-on: 'http://127.0.0.1:3000/'
           command: pnpm e2e:run
         env:
           # pass the Dashboard record key as an environment variable
