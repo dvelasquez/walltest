@@ -15,11 +15,11 @@ jobs:
         with:
           path: |
             ~/.pnpm-store
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+            ~/.cache/Cypress
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
-            ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+            node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+            node-${{ hashFiles('**/package.json') }}
       
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -50,11 +50,11 @@ jobs:
         with:
           path: |
             ~/.pnpm-store
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+            ~/.cache/Cypress
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
-            ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+            node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+            node-${{ hashFiles('**/package.json') }}
       
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
