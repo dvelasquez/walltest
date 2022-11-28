@@ -45,7 +45,7 @@ specifiers:
   style-loader: 3.3.1
   ts-jest: 29.0.3
   ts-node: 10.9.1
-  type-fest: 3.2.0
+  type-fest: 3.3.0
   typescript: 4.9.3
   webpack: 5.75.0
   webpack-bundle-analyzer: 4.7.0
@@ -64,7 +64,7 @@ devDependencies:
   '@babel/preset-react': 7.18.6_@babel+core@7.20.2
   '@babel/preset-typescript': 7.18.6_@babel+core@7.20.2
   '@babel/runtime': 7.20.1
-  '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_1091d16d871f82d2230ea42363eba601
+  '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_ac2c2ffd4bfe75b51b85c52f5d521937
   '@testing-library/dom': 8.19.0
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
@@ -99,7 +99,7 @@ devDependencies:
   style-loader: 3.3.1_webpack@5.75.0
   ts-jest: 29.0.3_f0a272fc0922320632bff53fddc9be47
   ts-node: 10.9.1_b51fae9271046ab829f100be7df4e9fd
-  type-fest: 3.2.0
+  type-fest: 3.3.0
   typescript: 4.9.3
   webpack: 5.75.0_webpack-cli@5.0.0
   webpack-bundle-analyzer: 4.7.0
@@ -1799,7 +1799,7 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@pmmmwh/react-refresh-webpack-plugin/0.5.10_1091d16d871f82d2230ea42363eba601:
+  /@pmmmwh/react-refresh-webpack-plugin/0.5.10_ac2c2ffd4bfe75b51b85c52f5d521937:
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
     engines: {node: '>= 10.13'}
     peerDependencies:
@@ -1835,7 +1835,7 @@ packages:
       react-refresh: 0.14.0
       schema-utils: 3.1.1
       source-map: 0.7.4
-      type-fest: 3.2.0
+      type-fest: 3.3.0
       webpack: 5.75.0_webpack-cli@5.0.0
       webpack-dev-server: 4.11.1_webpack-cli@5.0.0+webpack@5.75.0
     dev: true
@@ -7732,8 +7732,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/3.2.0:
-    resolution: {integrity: sha512-Il3wdLRzWvbAEtocgxGQA9YOoRVeVUGOMBtel5LdEpNeEAol6GJTLw8GbX6Z8EIMfvfhoOXs2bwOijtAZdK5og==}
+  /type-fest/3.3.0:
+    resolution: {integrity: sha512-gezeeOIZyQLGW5uuCeEnXF1aXmtt2afKspXz3YqoOcZ3l/YMJq1pujvgT+cz/Nw1O/7q/kSav5fihJHsC/AOUg==}
     engines: {node: '>=14.16'}
     dev: true
 
